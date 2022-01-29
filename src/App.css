@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Stylish&display=swap');
+
 .App {
   padding: 20px;
+  font-family: 'Jua', sans-serif;
+  font-family: 'Stylish', sans-serif;
 }
