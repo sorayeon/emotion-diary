@@ -1,46 +1,12 @@
-import { useContext, useRef, useState } from 'react';
+import { useContext, useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react/cjs/react.development';
 import { DiaryDispatchContext } from '../App';
+import { getStringDate } from '../utils/date';
+import { emotionList } from '../utils/emotion';
 
 import EmotionItem from './EmotionItem';
 import MyButton from './MyButton';
 import MyHeader from './MyHeader';
-
-const getStringDate = (date) => {
-  return date.toISOString().slice(0, 10);
-};
-
-const env = process.env;
-env.PUBLIC_URL = env.PUBLIC_URL || '';
-
-const emotionList = [
-  {
-    emotion_id: 1,
-    emotion_img: process.env.PUBLIC_URL + `/assets/emotion1.png`,
-    emotion_desc: '완전 좋음',
-  },
-  {
-    emotion_id: 2,
-    emotion_img: process.env.PUBLIC_URL + `/assets/emotion2.png`,
-    emotion_desc: '좋은',
-  },
-  {
-    emotion_id: 3,
-    emotion_img: process.env.PUBLIC_URL + `/assets/emotion3.png`,
-    emotion_desc: '그럭저럭',
-  },
-  {
-    emotion_id: 4,
-    emotion_img: process.env.PUBLIC_URL + `/assets/emotion4.png`,
-    emotion_desc: '나쁨',
-  },
-  {
-    emotion_id: 5,
-    emotion_img: process.env.PUBLIC_URL + `/assets/emotion5.png`,
-    emotion_desc: '끔찍함',
-  },
-];
 
 const DiaryEditor = ({ isEdit, originData }) => {
   const contentRef = useRef();
