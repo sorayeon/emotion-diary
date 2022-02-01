@@ -21,7 +21,7 @@ const Edit = () => {
         navigate('/', { replace: true });
       }
     }
-  }, [diaryList, id]);
+  }, [diaryList, id, navigate]);
 
   return (
     <div>
