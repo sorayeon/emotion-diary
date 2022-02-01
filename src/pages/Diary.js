@@ -13,15 +13,14 @@ const Diary = () => {
   const [data, setData] = useState();
 
   useEffect(() => {
-    const targetDiary = diaryList.find(
-      (it) => parseInt(it.id, 10) === parseInt(id, 10),
-    );
-
-    if (targetDiary) {
-      setData(targetDiary);
-    } else {
-      alert('없는 일기입니다.');
-      navigate('/', { replace: true });
+    if (diaryList.length >= 1) {
+      const targetDiary = diaryList.find((it) => Number(it.id) === Number(id));
+      if (targetDiary) {
+        setData(targetDiary);
+      } else {
+        alert('없는 일기입니다.');
+        navigate('/', { replace: true });
+      }
     }
   }, [diaryList, id]);
 
@@ -29,7 +28,7 @@ const Diary = () => {
     return <div className="DiaryPage">로딩중입니다...</div>;
   } else {
     const curEmotionData = emotionList.find(
-      (it) => parseInt(it.emotion_id, 10) === parseInt(data.id, 10),
+      (it) => Number(it.emotion_id) === Number(data.emotion),
     );
     return (
       <div className="DiaryPage">
