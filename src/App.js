@@ -49,8 +49,10 @@ function App() {
       const diaryList = JSON.parse(localData).sort(
         (a, b) => Number(a) - Number(b),
       );
-      dataId.current = Number(diaryList[0].id) + 1;
-      dispatch({ type: 'INIT', data: diaryList });
+      if (diaryList.length >= 1) {
+        dataId.current = Number(diaryList[0].id) + 1;
+        dispatch({ type: 'INIT', data: diaryList });
+      }
     }
   }, []);
 
