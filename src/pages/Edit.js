@@ -1,6 +1,5 @@
-import { useContext, useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useState } from 'react/cjs/react.development';
 import { DiaryStateContext } from '../App';
 import DiaryEditor from '../components/DiaryEditor';
 
@@ -13,9 +12,7 @@ const Edit = () => {
 
   useEffect(() => {
     if (diaryList.length >= 1) {
-      const targetDiary = diaryList.find(
-        (it) => parseInt(it.id, 10) === parseInt(id, 10),
-      );
+      const targetDiary = diaryList.find((it) => Number(it.id) === Number(id));
 
       if (targetDiary) {
         setOriginData(targetDiary);
